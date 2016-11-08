@@ -1,0 +1,91 @@
+<div class="row">
+	<div class="col-md-12">
+
+		<nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Restaurant Reviewer</a>
+            </div>
+		  </div>
+		</nav>
+
+		<div class="row">
+			<div class="col-md-offset-1 col-md-5">
+				<img src="{{restaurant.Image}}" width="100%" alt="image of {{restaurant.Name}} restaurant in {{restaurant.City}}">
+			</div>
+			<div class="col-md-5">
+				<h3>{{restaurant.Name}}</h3>
+				<span class="glyphicon glyphicon-star rating" ng-class="{gold: final >= 1}"></span>
+				<span class="glyphicon glyphicon-star rating" ng-class="{gold: final >= 2}"></span>
+				<span class="glyphicon glyphicon-star rating" ng-class="{gold: final >= 3}"></span>
+				<span class="glyphicon glyphicon-star rating" ng-class="{gold: final >= 4}"></span>
+				<span class="glyphicon glyphicon-star rating" ng-class="{gold: final >= 5}"></span>
+				<br><br>
+				<p>Website: {{restaurant.Website}}</p>
+				<p>Cuisine: {{restaurant.Cuisine}}</p>
+				<p>Address: {{restaurant.Address}} {{restaurant.City}}</p>
+				<p>Phone: {{restaurant.Phone}}</p>
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10">
+				<hr>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-sm-12">
+				<h3 class="text-center">Reviews</h3>
+				<div ng-repeat="review in reviews track by $index">
+					<hr>
+					<p><b>Rating:</b>   <span class="glyphicon glyphicon-star rating" ng-class="{gold: review.Stars >= 1}"></span>
+										<span class="glyphicon glyphicon-star rating" ng-class="{gold: review.Stars >= 2}"></span>
+										<span class="glyphicon glyphicon-star rating" ng-class="{gold: review.Stars >= 3}"></span>
+										<span class="glyphicon glyphicon-star rating" ng-class="{gold: review.Stars >= 4}"></span>
+										<span class="glyphicon glyphicon-star rating" ng-class="{gold: review.Stars >= 5}"></span></p>
+					<p><b>Name:</b> {{review.Name}}</p>
+					<p><b>Date:</b> {{review.Date}}</p>
+					<p><b>Comments:</b> {{review.Comment}}</p>
+				</div>
+				<hr>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-sm-12">
+				<h3 class="text-center">Add a review:</h3>
+				<form name="newUser" ng-submit="addReview()">
+
+					<label for="name">* Name: </label>			
+					<input type="text" name="name" id="name" class="form-control" placeholder="John Smith" required autocomplete="name" ng-model="name">
+					<br />
+					<label for="rdate">* Date: </label>			
+					<input type="date" id="rdate" class="form-control" required ng-model="rdate">	
+					<br />	
+					<label for="comment">* Comment: </label>			
+					<textarea id="comment" class="form-control" placeholder="I love this restaurant!" required ng-model="comment"></textarea>
+					<br />				
+
+					<label>* Rating: &nbsp;&nbsp;&nbsp;&nbsp;
+						<span class="star-rating star-5">
+						  <input type="radio" name="rating" value="1" ng-model="stars" required><i></i>
+						  <input type="radio" name="rating" value="2" ng-model="stars" required><i></i>
+						  <input type="radio" name="rating" value="3" ng-model="stars" required><i></i>
+						  <input type="radio" name="rating" value="4" ng-model="stars" required><i></i>
+						  <input type="radio" name="rating" value="5" ng-model="stars" required><i></i>
+						</span>
+					</label>				
+					<br /><br />
+					<input type="submit" class="btn btn-primary" value="Post Review" role="button">	
+				</form>
+				
+				<br />
+				* Required
+			</div>
+		</div>
+
+<br /><br />
+	</div>
+</div>
+
+
